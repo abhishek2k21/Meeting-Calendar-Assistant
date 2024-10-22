@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.mockito.ArgumentMatchers.any; // Add this import
+import static org.mockito.ArgumentMatchers.any; 
 
 @ExtendWith(MockitoExtension.class)
 public class MeetingControllerTests {
@@ -39,17 +39,14 @@ public class MeetingControllerTests {
 
     @Test
     void testBookMeeting() throws Exception {
-        // Prepare the meeting object
         Meeting meeting = new Meeting();
-        meeting.setEmployee(1L); // Set the employee ID
-        meeting.setDate("15/10/2024"); // Keep as String
+        meeting.setEmployee(1L); 
+        meeting.setDate("15/10/2024"); 
         meeting.setTime("10:00");
 
-        // Mock the repository's behavior
 //        when(employeeRepository.existsById(meeting.getEmployee())).thenReturn(true);
-        when(meetingService.bookMeeting(any(Meeting.class))).thenReturn(1); // Use any() for matching
+        when(meetingService.bookMeeting(any(Meeting.class))).thenReturn(1); 
 
-        // Perform the request and check the result
         mockMvc.perform(post("/calendar/book/meeting")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(meeting)))
