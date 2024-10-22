@@ -6,16 +6,15 @@ import jakarta.validation.constraints.Pattern;
 public class Meeting {
 
     @NotNull(message = "Enter Employee ID")
-    private Long employee; // Employee ID as Long
+    private Long employee; 
 
     @NotNull(message = "Enter The Meeting Date")
     @Pattern(regexp = "^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$", message = "Enter Date In Correct Format (dd/MM/yyyy)")
-    private String date; // Keep as String for regex validation
+    private String date; 
 
     @NotNull(message = "Enter The Meeting Time")
     @Pattern(regexp = "([01]?[0-9]|2[0-3]):[0-5][0-9]", message = "Enter Time In 24 Hour Format")
-    private String time; // Time as String in 24-hour format
-
+    private String time; 
     public Meeting() {
         super();
     }
@@ -27,26 +26,26 @@ public class Meeting {
     }
 
     public Long getEmployee() {
-        return employee; // Getter for employee
+        return employee; 
     }
 
     public void setEmployee(Long employee) {
-        this.employee = employee; // Setter for employee
+        this.employee = employee;
     }
 
     public String getDate() {
-        return date; // Getter for date
+        return date; 
     }
 
     public void setDate(String date) {
-        this.date = date; // Setter for date
+        this.date = date; 
     }
 
     public String getTime() {
-        return time; // Getter for time
+        return time; 
     }
 
     public void setTime(String time) {
-        this.time = time; // Setter for time
+        this.time = time; 
     }
 }
