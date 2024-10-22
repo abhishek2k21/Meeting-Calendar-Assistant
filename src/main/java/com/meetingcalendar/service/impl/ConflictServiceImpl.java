@@ -22,8 +22,8 @@ public class ConflictServiceImpl implements ConflictService {
         List<String> conflicts = new ArrayList<>();
         
         for (TimeSlot slot : conflictingSlots) {
-            conflicts.addAll(slot.getParticipants()); // Aggregate participants from each TimeSlot
+            conflicts.addAll(slot.getParticipants()); 
         }
-        return conflicts; // Return the list of conflicts (participants)
+        return conflicts;
     }
 }
