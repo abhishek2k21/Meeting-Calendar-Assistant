@@ -25,17 +25,14 @@ public class FreeSlotServiceTest {
 
     @BeforeEach
     public void setup() {
-        // Initialize the mocks before each test
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
     public void testGetFreeSlots() {
-        // Assuming that the getFreeSlots method returns a list of free slots based on employee IDs
         when(employeeRepository.findById(1L)).thenReturn(Optional.empty());
         when(employeeRepository.findById(2L)).thenReturn(Optional.empty());
 
-        // Call the method and assert the expected outcome
         assertEquals(0, freeSlotService.getFreeSlots(1L, 2L).size());
     }
 }
