@@ -33,15 +33,15 @@ public class MeetingServiceImpl implements MeetingService {
 
     @Override
     public int bookMeeting(Meeting meeting) throws ParseException {
-        Optional<Employee> employeeOpt = employeeRepository.findById(meeting.getEmployee()); // Now using Long directly
+        Optional<Employee> employeeOpt = employeeRepository.findById(meeting.getEmployee());
         if (employeeOpt.isEmpty()) {
-            return 0; // Employee not found
+            return 0; 
         }
 
         Employee employee = employeeOpt.get();
         String dateTime = meeting.getDate() + " " + meeting.getTime();
         if (employee.getMeetings() != null && employee.getMeetings().contains(dateTime)) {
-            return 2; // Meeting conflict
+            return 2; 
         }
 
         List<String> employeeMeetings = employee.getMeetings() != null ? employee.getMeetings() : new ArrayList<>();
@@ -49,13 +49,13 @@ public class MeetingServiceImpl implements MeetingService {
         employee.setMeetings(employeeMeetings);
         employeeRepository.save(employee);
 
-        // Also, save in the meeting repository
+        
         TimeSlot timeSlot = new TimeSlot();
         timeSlot.setTimeSlot(dateTime);
-        timeSlot.setParticipants(List.of(String.valueOf(meeting.getEmployee()))); // Convert Long to String
+        timeSlot.setParticipants(List.of(String.valueOf(meeting.getEmployee()))); 
         meetingRepository.save(timeSlot);
 
-        return 1; // Meeting booked successfully
+        return 1; 
     }
 
     @Override
